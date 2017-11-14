@@ -523,7 +523,6 @@ _this['resemble'] = function( fileData ){
         return self;
       },
       ignoreColors: function(){
-
         tolerance.alpha = 16;
         tolerance.minBrightness = 16;
         tolerance.maxBrightness = 240;
@@ -531,6 +530,19 @@ _this['resemble'] = function( fileData ){
         ignoreAntialiasing = false;
         ignoreColors = true;
 
+        if(hasMethod) { param(); }
+        return self;
+      },
+      ignore(options) {
+        if (options.tolerance != null) {
+          Object.assign(tolerance, options.tolerance);
+        }
+        if (options.ignoreAntialiasing != null) {
+          ignoreAntialiasing = options.ignoreAntialiasing;
+        }
+        if (options.ignoreColors != null) {
+          ignoreColors = options.ignoreColors;
+        }
         if(hasMethod) { param(); }
         return self;
       },
